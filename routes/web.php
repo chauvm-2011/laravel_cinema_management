@@ -6,6 +6,9 @@ use \App\Http\Controllers\Admin\HomeController;
 use \App\Http\Controllers\Admin\RegisterController;
 use \App\Http\Controllers\Admin\ListCategoryController;
 use \App\Http\Controllers\Admin\AddCategoryController;
+use \App\Http\Controllers\Admin\UpdateCategoryController;
+use \App\Http\Controllers\Admin\ListMovieController;
+use \App\Http\Controllers\Admin\AddMovieController;
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'postLogin']);
@@ -18,4 +21,7 @@ Route::middleware(['checklogin'])->group(function () {
     Route::get('add_category', [AddCategoryController::class, 'showAddCategoryForm'])->name('add_category');
     Route::post('add_category', [AddCategoryController::class, 'postAddCategory']);
     Route::get('list_category', [ListCategoryController::class, 'showListCategoryForm'])->name('list_category');
+    Route::get('update_category/{category}', [UpdateCategoryController::class, 'showUpdateCategoryForm']);
+    Route::post('update_category/{category}', [UpdateCategoryController::class, 'update']);
+    Route::delete('delete_category', [ListCategoryController::class, 'destroy']);
 });

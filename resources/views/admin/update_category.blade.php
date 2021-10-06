@@ -19,27 +19,29 @@
                     <!-- jquery validation -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Add Category </h3>
+                            <h3 class="card-title">Update Category </h3>
                         </div>
                         <!-- /.card-header -->
-                        <form action="{{ url('/add_category') }}" method="post" >
+                        <form action="{{ url('/update_category/'.$category->id.'') }}" method="post" >
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter category">
+                                    <input type="text" name="name" value="{{ $category->name }}" class="form-control" placeholder="Enter category">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Parent category </label>
                                     <select class="form-control" name="category_id">
                                         <option value="" >------Category parent------</option>
-                                        @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @foreach($categories as $categoryParent)
+                                            <option value="{{ $categoryParent->id }}"
+                                                    {{ $category->category_id == $categoryParent->id ? 'selected' : '' }}
+                                            >{{ $categoryParent->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="4" name="description" placeholder="Enter ..."></textarea>
+                                    <textarea class="form-control" rows="4" name="description" placeholder="Enter ...">{{ $category->description }}</textarea>
                                 </div>
                             </div>
                             <!-- /.card-body -->
