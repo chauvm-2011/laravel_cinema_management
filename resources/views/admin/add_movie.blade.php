@@ -22,30 +22,41 @@
                             <h3 class="card-title">Add Category </h3>
                         </div>
                         <!-- /.card-header -->
-                        <form action="{{ url('/add_category') }}" method="post" >
+                        <form action="{{ url('/add_movie') }}" method="post" >
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter category">
+                                    <label for="">Movie name</label>
+                                    <input type="text" name="movie_name" class="form-control" placeholder="Enter movie name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Parent category </label>
-                                    <select class="form-control" name="category_id">
-                                        <option value="" >------Category parent------</option>
-                                        @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
+                                    <label>Category</label>
+                                    <select class="select2" name="category_id" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                                        <option>Alabama</option>
+                                        <option>Alaska</option>
+                                        <option>California</option>
+                                        <option>Delaware</option>
+                                        <option>Tennessee</option>
+                                        <option>Texas</option>
+                                        <option>Washington</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="4" name="description" placeholder="Enter ..."></textarea>
+                                    <textarea class="form-control" rows="3" name="description" placeholder="Enter ..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Image</label>
+                                    <input type="file" name="image" class="form-control" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Time(Minutes):</label>
+                                    <input type="number" name="time" class="form-control" >
                                 </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="{{ url('/list_category') }}" class="btn btn-primary">Cancel</a>
+                                <a href="{{ url('/list_movie') }}" class="btn btn-primary">Cancel</a>
                             </div>
                             @csrf
                         </form>

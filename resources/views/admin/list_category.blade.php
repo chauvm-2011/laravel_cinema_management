@@ -27,24 +27,36 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example2" class="table table-bordered table-hover">
+                            <table id="example1" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>No</th>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Option</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                </tr>
+                                {!! \App\Helpers\Helper::category($categories) !!}
+{{--                                <?php--}}
+{{--                                    $no = 1--}}
+{{--                                ?>--}}
+{{--                                @foreach($categories as $category)--}}
+{{--                                <tr>--}}
+{{--                                    <td>{{ $no++ }}</td>--}}
+{{--                                    <td>{{ $category->name }}</td>--}}
+{{--                                    <td>{{ $category->description }}</td>--}}
+{{--                                    <td>--}}
+{{--                                        <a href="{{ '/update_category/'.$category->id.'' }}" class="btn btn-primary btn-sm">--}}
+{{--                                            <i class="fas fa-edit"></i>--}}
+{{--                                        </a>--}}
+{{--                                        <a  class="btn btn-danger btn-sm"--}}
+{{--                                        onclick="removeRow('{{ $category->id }}', '{{ url('/delete_category') }}')">--}}
+{{--                                            <i class="fas fa-trash"></i>--}}
+{{--                                        </a>--}}
+{{--                                    </td>--}}
+{{--                                </tr>--}}
+{{--                                @endforeach--}}
                                 </tbody>
                             </table>
                         </div>
