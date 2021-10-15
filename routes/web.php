@@ -9,6 +9,8 @@ use \App\Http\Controllers\Admin\AddCategoryController;
 use \App\Http\Controllers\Admin\UpdateCategoryController;
 use \App\Http\Controllers\Admin\ListMovieController;
 use \App\Http\Controllers\Admin\AddMovieController;
+use \App\Http\Controllers\Admin\UploadController;
+use \App\Http\Controllers\Admin\DetailMovieController;
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'postLogin']);
@@ -24,7 +26,9 @@ Route::middleware(['checklogin'])->group(function () {
     Route::get('update_category/{category}', [UpdateCategoryController::class, 'showUpdateCategoryForm']);
     Route::post('update_category/{category}', [UpdateCategoryController::class, 'update']);
     Route::delete('delete_category', [ListCategoryController::class, 'destroy']);
-    Route::get('list_movie', [ListMovieController::class, 'showListMovieForm']);
+    Route::get('list_movie', [ListMovieController::class, 'showListMovieForm'])->name('list_movie');
     Route::get('add_movie', [AddMovieController::class, 'showAddMovieForm']);
     Route::post('add_movie', [AddMovieController::class, 'postAddMovie']);
+    Route::post('upload', [UploadController::class, 'store']);
+    Route::get('detail_movie/{movie}', [DetailMovieController::class, 'showDetailMovieForm']);
 });
