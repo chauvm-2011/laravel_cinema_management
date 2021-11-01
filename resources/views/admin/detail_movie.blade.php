@@ -52,6 +52,10 @@
                                     <input type="hidden" name="image" value="{{ $movie->image }}" id="file">
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Link trailer</label>
+                                    <input type="text" value="{{ $movie->link }}" disabled name="link" class="form-control" placeholder="Enter link trailer">
+                                </div>
+                                <div class="form-group">
                                     <label for="">Time(Minutes):</label>
                                     <input type="text" value="{{ $movie->time }}" disabled name="time" class="form-control" >
                                 </div>

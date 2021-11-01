@@ -15,12 +15,4 @@ class MovieSchedule extends Model
         'movie_id',
         'room_id',
     ];
-    public function movies()
-    {
-        return $this->hasMany(Movie::class);
-    }
-    public function rooms()
-    {
-        return $this->hasMany(Room::class);
-    }
 }

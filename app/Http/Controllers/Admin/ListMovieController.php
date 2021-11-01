@@ -14,10 +14,27 @@ class ListMovieController extends Controller
     {
         $this->movieService = $movieService;
     }
+
     public function showListMovieForm()
     {
         return view('admin.list_movie', [
             'movies' => $this->movieService->getListMovie(),
+        ]);
+    }
+
+    public function destroy(Request $request)
+    {
+        $result = $this->movieService->delete($request);
+
+        if ($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Delete movie successfully!',
+            ]);
+        }
+
+        return response()->json([
+            'error' => true,
         ]);
     }
 }

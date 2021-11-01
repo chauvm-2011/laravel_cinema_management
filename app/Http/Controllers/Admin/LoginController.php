@@ -24,8 +24,16 @@ class LoginController extends Controller
         if (Auth::attempt([
                 'username' => $request->input('username'),
                 'password' => $request->input('password'),
+                'role' => 0,
             ], $request->input('remember'))) {
             return redirect()->route('home');
+        }
+        if (Auth::attempt([
+            'username' => $request->input('username'),
+            'password' => $request->input('password'),
+            'role' => 1,
+        ], $request->input('remember'))) {
+            return redirect()->route('main-login');
         }
 
         return redirect()->route('login')->with('error', 'Email or password incorrect!');

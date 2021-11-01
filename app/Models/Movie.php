@@ -14,9 +14,15 @@ class Movie extends Model
         'description',
         'image',
         'time',
+        'link',
     ];
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function movieschedules()
+    {
+        return $this->hasMany(MovieSchedule::class);
     }
 }

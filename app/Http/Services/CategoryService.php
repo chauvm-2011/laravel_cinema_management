@@ -51,7 +51,5 @@ class CategoryService
         if ($category) {
             return Category::where('id', $id)->orwhere('category_id', $id)->delete();
         }
-
-        return false;
     }
 }
