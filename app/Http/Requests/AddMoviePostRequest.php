@@ -25,10 +25,11 @@ class AddMoviePostRequest extends FormRequest
     {
         return [
             'movie_name' => 'required|unique:movies',
-            'description' => 'required',
+            'description' => 'required|max:1000',
             'category_id' => 'required',
             'file' => 'required',
-            'time' => 'required|numeric',
+            'time' => 'required|numeric|min:1|max:200',
+            'link' => 'required',
         ];
     }
 }

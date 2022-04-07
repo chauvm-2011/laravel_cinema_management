@@ -24,8 +24,8 @@ class AddCategoryPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:categories',
-            'description' => 'required',
+            'name' => 'required|unique:categories|regex:/^[a-zA-Z]+/u',
+            'description' => 'required|regex:/^[a-zA-Z]+/u',
         ];
     }
 }

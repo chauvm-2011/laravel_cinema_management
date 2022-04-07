@@ -13,6 +13,6 @@ class Ticket extends Model
         'price',
         'movie_schedule_id',
         'bill_id',
-        'seat_id',
+        'seat_name',
     ];
 }

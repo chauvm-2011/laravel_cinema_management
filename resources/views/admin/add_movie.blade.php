@@ -50,6 +50,10 @@
                                     <input type="hidden" name="file" id="file">
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Link trailer</label>
+                                    <input type="text" name="link" class="form-control" placeholder="Enter link trailer">
+                                </div>
+                                <div class="form-group">
                                     <label for="">Time(Minutes):</label>
                                     <input type="number" name="time" class="form-control" >
                                 </div>

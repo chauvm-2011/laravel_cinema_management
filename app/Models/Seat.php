@@ -13,8 +13,8 @@ class Seat extends Model
         'type_of_chair',
         'room_id',
     ];
-    public function tickets()
-    {
-        return $this->hasMany(Ticket::class);
-    }
+//    public function tickets()
+//    {
+//        return $this->hasMany(Ticket::class);
+//    }
 }

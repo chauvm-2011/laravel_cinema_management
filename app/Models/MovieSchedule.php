@@ -9,18 +9,17 @@ class MovieSchedule extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'start_time',
-        'end_time',
         'date',
         'movie_id',
         'room_id',
     ];
-    public function movies()
+    public function tickets()
     {
-        return $this->hasMany(Movie::class);
+        return $this->hasMany(Ticket::class);
     }
-    public function rooms()
+
+    public function movieshowtimes()
     {
-        return $this->hasMany(Room::class);
+        return $this->belongsToMany(MovieShowtime::class);
     }
 }

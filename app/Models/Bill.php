@@ -9,6 +9,9 @@ class Bill extends Model
 {
     use HasFactory;
 
+    public const BILLPUBLIC = 1;
+    public const BILLPRIVATE = 0;
+
     protected $fillable = [
         'total_money',
         'status',

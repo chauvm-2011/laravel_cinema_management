@@ -16,4 +16,8 @@ class Room extends Model
     {
         return $this->hasMany(Seat::class);
     }
+    public function movieschedules()
+    {
+        return $this->hasMany(MovieSchedule::class);
+    }
 }

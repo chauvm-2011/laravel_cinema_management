@@ -14,6 +14,10 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'vnp_tmn_code' => env('VNP_TMN_CODE','8ZJ5BG4T'),
+    'vnp_hash_secret' => env('VNP_HASH_SECRET', 'MTVLJSROWRRSQZCNGQCYMIKVBPJGTVFF'),
+    'vnp_url' => env('VNP_URL', 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html'),
+    'vnp_return_url' => env('VNP_RETURN_URL', 'https://f864-113-20-108-104.ngrok.io/payment-vnpay-return'),
 
     /*
     |--------------------------------------------------------------------------

@@ -35,18 +35,18 @@
             @endif
             @if (Session::has('error'))
                 <div class="alert alert-danger">
-                    {{Session::get('error')}}
+                    {!! Session::get('error') !!}
                 </div>
             @endif
             @if (Session::has('message'))
                 <div class="alert alert-success">
-                    {{Session::get('message')}}
+                    {!!Session::get('message') !!}
                 </div>
             @endif
 
             <form action="{{ url("/login") }}" method="post">
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" name="username" placeholder="Username">
+                    <input type="email" class="form-control" name="email" placeholder="email">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>

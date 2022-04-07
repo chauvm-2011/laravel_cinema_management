@@ -27,7 +27,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-hover">
+                            <table id="example1" class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <th>No</th>
@@ -57,7 +57,7 @@
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a  class="btn btn-danger btn-sm"
-                                            onclick="remove('{{ $movie->id }}', '{{ url('/delete_movie') }}')">
+                                            onclick="removeRow('{{ $movie->id }}', '{{ url('/delete_movie') }}')">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>

@@ -34,6 +34,7 @@ class MovieService
                     'description' => $data['description'],
                     'image' => $data['file'],
                     'time' => $data['time'],
+                    'link' => $data['link'],
                 ]);
                 foreach ($data['category_id'] as $value) {
                     CategoryMovie::create([
@@ -45,5 +46,40 @@ class MovieService
         } catch (\Exception $exception) {
             return response($exception);
         }
+    }
+
+    public function update($request, $movie)
+    {
+        try {
+            DB::transaction(function () use ($request, $movie){
+                $data = $request->all();
+                $categoryMovie = CategoryMovie::where('movie_id', $movie->id)->first();
+                if ($categoryMovie) {
+                    CategoryMovie::where('movie_id', $movie->id)->delete();
+                    $movie->update($request->all());
+                    foreach ($data['category_id'] as $value) {
+                        CategoryMovie::create([
+                            'movie_id' => $movie->id,
+                            'category_id' => $value,
+                        ]);
+                    }
+                }
+            });
+        } catch (\Exception $exception) {
+            return response($exception);
+        }
+    }
+
+    public function delete($request)
+    {
+            $categoryMovie = CategoryMovie::where('movie_id', $request->input('id'))->first();
+            if ($categoryMovie) {
+                CategoryMovie::where('movie_id', $request->input('id'))->delete();
+                $movie = Movie::where('id', $request->input('id'))->first();
+                if ($movie) {
+                    return Movie::where('id', $request->input('id'))->delete();
+                }
+            }
+
     }
 }

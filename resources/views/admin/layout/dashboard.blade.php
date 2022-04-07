@@ -58,7 +58,14 @@
                     <img src="{{asset("template/dist/img/user2-160x160.jpg")}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <a href="#" class="d-block"><?php
+                        $name = \Illuminate\Support\Facades\Auth::user()->name;
+                        if ($name) {
+                            echo $name;
+                        }
+                        ?></a>
+                    </ul>
                 </div>
             </div>
 
@@ -73,7 +80,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -81,7 +87,7 @@
                          with font-awesome or any other icon font library -->
                     <li class="nav-item menu-open">
                         <a href="{{ url('/list_category') }}" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <i class="nav-icon fas fa-list"></i>
                             <p>
                                 List Category
                             </p>
@@ -89,17 +95,25 @@
                     </li>
                     <li class="nav-item menu-open">
                         <a href="{{ url('/list_movie') }}" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <i class="nav-icon fas fa-list"></i>
                             <p>
                                 List Movie
                             </p>
                         </a>
                     </li>
                     <li class="nav-item menu-open">
-                        <a href="{{ url('/list_service') }}" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <a href="{{ url('/list_movie_schedule') }}" class="nav-link">
+                            <i class="nav-icon fas fa-list"></i>
                             <p>
-                                List Service
+                                Movie Schedule
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu-open">
+                        <a href="{{ url('/logout') }}" class="nav-link">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <p>
+                                Logout
                             </p>
                         </a>
                     </li>
@@ -320,8 +334,10 @@
 <script src="{{asset("template/plugins/datatables-buttons/js/buttons.print.min.js")}}"></script>
 <script src="{{asset("template/plugins/datatables-buttons/js/buttons.colVis.min.js")}}"></script>
 <script src="{{ asset("template/js/main.js") }}"></script>
+<script src="{{ asset("template/js/search.js") }}"></script>
 <!-- Select2 -->
 <script src="{{asset("template/plugins/select2/js/select2.full.min.js")}}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(function () {
         $("#example1").DataTable({

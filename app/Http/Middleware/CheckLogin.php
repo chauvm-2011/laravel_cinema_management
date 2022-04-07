@@ -18,7 +18,12 @@ class CheckLogin
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check() || Auth::viaRemember()) {
-            return $next($request);
+            if (Auth::user()->email_verified_at !== null) {
+                return $next($request);
+            } else {
+                Auth::logout();
+                return redirect()->route('login')->with('error', 'The account has not been verified. Please  <a href ="https://mail.google.com">click here to verify your account</a>');
+            }
         } else {
             return redirect()->route('login');
         }
