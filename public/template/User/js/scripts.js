@@ -722,7 +722,16 @@ function myFunctionTime(time,id) {
                 if(check.checked === true) {
                     window.location.href = '/payment-vnpay?total='+total+'&counter='+number_seat+'&seat='+seat+'&movie_schedule_id='+id+'&price='+price+''
                 } else {
-                    alert('Please choose a form of payment')
+                    Swal.fire({
+                        title: 'Please choose a form of payment.',
+                        icon: 'warning',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
                 }
             });
         }

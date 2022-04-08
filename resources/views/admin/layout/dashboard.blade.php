@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{asset("template/plugins/select2/css/select2.min.css")}}">
     <link rel="stylesheet" href="{{asset("template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{asset("template/dist/css/statistic.css")}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -335,9 +336,12 @@
 <script src="{{asset("template/plugins/datatables-buttons/js/buttons.colVis.min.js")}}"></script>
 <script src="{{ asset("template/js/main.js") }}"></script>
 <script src="{{ asset("template/js/search.js") }}"></script>
+<script src="{{ asset("template/js/statistic.js") }}"></script>
 <!-- Select2 -->
 <script src="{{asset("template/plugins/select2/js/select2.full.min.js")}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script>
     $(function () {
         $("#example1").DataTable({
