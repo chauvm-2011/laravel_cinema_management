@@ -66,20 +66,23 @@
                     <form action="{{ url('/home') }}" method="post">
                         <div class="btn-group" id="btn-group-statistic">
                             <input type="button" class="btn bt btn-primary" id="btn-day" value="Day">
-                            <input type="button" class="btn bt btn-primary" id="btn-week" value="Week">
                             <input type="button" class="btn bt btn-primary" id="btn-month" value="Month">
                         </div>
                         @csrf
                     </form>
                     <form autocomplete="off" action="{{ url('/home') }}" id="day-search">
                         <div class= "col-lg-6">
-                            <label>Start date: <input type="date" id="from-date" class="form-control"></label>
-                            <label>End date: <input type="date" id="to-date" class="form-control"></label>
+                            <label>From date: <input type="date" id="from-date" class="form-control"></label>
+                            <label>To date: <input type="date" id="to-date" class="form-control"></label>
                             <input type="button" class="btn btn-primary" id="search-statistic" value="Search">
                         </div>
                         @csrf
                     </form>
                     <div id="container-chart"></div>
+                    <div id="container-chart-day"></div>
+                    <div id="container-chart-last-seven-day">
+
+                    </div>
                 </div>
             </div>
         </div>

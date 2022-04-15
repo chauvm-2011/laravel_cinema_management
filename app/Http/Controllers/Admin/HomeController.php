@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bill;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -42,7 +43,8 @@ class HomeController extends Controller
         ]);
     }
 
-    public function monthlyRevenueStatistics() {
+    public function monthlyRevenueStatistics()
+    {
         $totalMonths = [];
         for ($i = 1; $i<=12; $i++) {
             $total = 0;
@@ -55,8 +57,29 @@ class HomeController extends Controller
         return response()->json($totalMonths);
     }
 
-    public function dayRevenueStatistics(Request $request) {
-//        $totalDate = DB::table('bills')->whereBetween('created_at',[])->get();
+    public function dayRevenueStatistics(Request $request)
+    {
+        $data = $request->all();
+        $dateTimes = [];
+        $totalDays = [];
+        $from_date = strtotime($data['from_date']);
+        $to_date = strtotime($data['to_date']);
+        $distance = abs($from_date - $to_date);
+        for ($i = 0; $i <= $distance/(60*60*24); $i++) {
+            $total = 0;
+            $dates = Carbon::createFromDate($data['from_date'])->addDay($i);
+            $bills = DB::table('bills')->whereDate('created_at', $dates)->get();
+            foreach ($bills as $bill) {
+                $total += $bill->total_money;
+            }
+            array_push($dateTimes,$dates->toDateString());
+            array_push($totalDays,$total);
+        }
+
+        return response()->json([
+            'dates' => $dateTimes,
+            'totals' => $totalDays,
+        ]);
     }
 
     public function logout()
