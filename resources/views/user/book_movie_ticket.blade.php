@@ -39,14 +39,14 @@
                                 <h3 class="mt3">Date</h3>
                                 @php
                                     use Carbon\Carbon;
-                                    $dt = Carbon::now('Asia/Ho_Chi_Minh');
-                                    $ed = Carbon::today()->addDay(9);
-                                    for ($i= $dt->toDateString(); $i < $ed; $i++){
-                                        $a[] = $i;
+                                    $listDates = [];
+                                    for ($i = 0; $i <= 9; $i++) {
+                                        $date = Carbon::today()->addDay($i);
+                                        array_push($listDates,$date->toDateString());
                                     }
                                 @endphp
                                 <ul class="order-date">
-                                    @foreach($a as $date)
+                                    @foreach($listDates as $date)
                                         @foreach($movie->movieschedules as $movieschedule)
                                             @if ($date === $movieschedule->date)
                                                 @break

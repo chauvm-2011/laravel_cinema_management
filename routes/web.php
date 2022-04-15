@@ -39,6 +39,8 @@ Route::get('accept-user/{user}/{token}', [LoginController::class, 'accept'])->na
 Route::middleware(['checklogin'])->group(function () {
     Route::middleware(['checkrole'])->group(function () {
         Route::get('home', [HomeController::class, 'showHomeForm'])->name('home');
+        Route::get('home-month-statistic', [HomeController::class, 'monthlyRevenueStatistics']);
+        Route::post('home-day-statistic', [HomeController::class, 'dayRevenueStatistics']);
         Route::get('add_category', [AddCategoryController::class, 'showAddCategoryForm'])->name('add_category');
         Route::post('add_category', [AddCategoryController::class, 'postAddCategory']);
         Route::get('list_category', [ListCategoryController::class, 'showListCategoryForm'])->name('list_category');
